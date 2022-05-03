@@ -1,12 +1,61 @@
-<div class="row">
-  <div class="col-md-4 col-sm-6" *ngFor="let item of results">
-    <div class="card">
-      <img [src]="item.images.downsized_medium.url" [alt]="item.title" class="card-text">
-      <div class="card-body">
-        <div class="card-text">
-          {{item.title}}
-        </div>
-      </div>
+<div class="row content-results">
+  <p *ngIf="lastSearch">
+    Ultima busqueda:
+    <b>{{ lastSearch | titlecase }}</b>
+  </p>
+  <div
+    class="d-flex justify-content-center"
+    *ngIf="results.length === 0 && lastSearch !== ''; else enableResults"
+  >
+    <div class="spinner-border" role="status">
+      <span class="sr-only"></span>
     </div>
   </div>
+  <ng-template #enableResults>
+    <div
+      class="d-flex justify-content-center"
+      *ngIf="results.length === 0 && lastSearch === ''; else emptyResults"
+    >
+    <h2>No hay busquedas recientes.</h2>
+    </div>
+    <ng-template #emptyResults class="row row-cols-1 row-cols-md-4 row-cols-sm-6 g-4">
+      <div
+        class="col-md-4 col-sm-6 animate__animated animate__fadeIn"
+        *ngFor="let item of results"
+      >
+        <div class="card mt-3">
+          <img
+            [src]="item.images.downsized_medium.url"
+            [alt]="item.title"
+            class="card-text"
+            height="250px"
+          />
+          <div class="card-body">
+            <div class="card-text">
+              {{ item.title | titlecase }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav aria-label="Page navigation example" class="mt-3">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" [ngClass]="{ disabled: page === 12 }">
+            <a
+              class="page-link"
+              href="#"
+              tabindex="-1"
+              (click)="handleOnClickPreviousPage()"
+            >
+              Previous
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" (click)="handleOnClickNextPage()">
+              Next
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </ng-template>
+  </ng-template>
 </div>
