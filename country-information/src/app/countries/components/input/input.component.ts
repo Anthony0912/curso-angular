@@ -20,10 +20,13 @@ export class InputComponent implements OnInit {
 
   ngOnInit(): void {
     this.debounce.pipe(debounceTime(300)).subscribe(value => {
-      this.onEnter.emit(value)
+      this.onDebounce.emit(value)
     })
   }
 
+  public search(): void {
+    this.onEnter.emit(this.termino);
+  }
   public onPress(): void {
     this.debounce.next(this.termino)
   }

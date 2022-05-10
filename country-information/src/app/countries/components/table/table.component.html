@@ -18,10 +18,10 @@
           [alt]="country.name.official"
         />
       </td>
-      <td>{{ country.capital }}, {{ country.name.official }}</td>
+      <td>{{ country.capital }}, {{ country.name?.official ?? country.name}}</td>
       <td>{{ country.population | number }}</td>
       <td>
-        <a [routerLink]="['/pais', country.cca2]">Ver...</a>
+        <a [routerLink]="['/pais', country?.cca2 ?? country.alpha3Code]">Ver...</a>
       </td>
     </tr>
   </tbody>

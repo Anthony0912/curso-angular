@@ -1,1 +1,30 @@
-<p>region works!</p>
+<div class="animate__animated animate__fadeIn animate__faster">
+  <h3>
+    Buscar por region
+    <small>{{ regionActive | titlecase }}</small>
+  </h3>
+  <hr />
+  <h5>Selecciona la region</h5>
+  <div class="row">
+    <div class="col">
+      <!-- [class.btn-primary]="region === regionActive" -->
+      <!-- [ngClass]="{
+      'btn-primary': region === regionActive,
+      'btn-outline-primary': region !== regionActive
+    }" -->
+      <!-- [class]="(region === regionActive) ? 'btn btn-primary' : 'btn btn-outline-primary'" -->
+      <button
+        *ngFor="let region of regions"
+        [class]="getClassCSSRegionButton(region)"
+        (click)="handleOnRegionActive(region)"
+      >
+        {{ region | titlecase }}
+      </button>
+    </div>
+    <div class="row" *ngIf="countries.length > 0">
+      <div class="col">
+        <app-table [countries]="countries"></app-table>
+      </div>
+    </div>
+  </div>
+</div>

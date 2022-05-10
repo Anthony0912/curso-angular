@@ -17,13 +17,18 @@ export class ViewCountryComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private countryService: CountryService) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.pipe(switchMap(({ id }) => this.countryService.searchCountryByCode(id)), tap(console.log)).subscribe(country => {
+    this.activatedRoute.params.pipe(switchMap(({ id }) => this.countryService.searchCountryByCode(id))).subscribe(country => {
       this.country = country[0]
     })
   };
 
-  // Opcional
-  // this.activatedRoute.params.subscribe(({ id }) => {
-  //   this.countryService.searchCountryByCode(id).subscribe(country => { })
-  //  })
 }
+
+// Con tap en el pipe
+// this.activatedRoute.params.pipe(switchMap(({ id }) => this.countryService.searchCountryByCode(id)), tap(console.log)).subscribe(country => {
+//   this.country = country[0]
+// })
+// Opcional
+// this.activatedRoute.params.subscribe(({ id }) => {
+//   this.countryService.searchCountryByCode(id).subscribe(country => { })
+//  })

@@ -34,6 +34,7 @@ export interface Country {
     borders?: string[];
     gini?: { [key: string]: number };
     fifa?: string;
+    alpha3Code?:string;
 }
 
 export interface CapitalInfo {
