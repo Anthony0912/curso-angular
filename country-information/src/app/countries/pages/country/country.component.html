@@ -1,1 +1,16 @@
-<p>country works!</p>
+<h2>Buscar por País</h2>
+<hr />
+<div class="row">
+  <div class="col">
+    <app-input (onEnter)="search($event)" (onDebounce)="suggestions($event)" placeholder="Buscar por país..."></app-input>
+  </div>
+</div>
+<hr />
+<div class="alert alert-danger" *ngIf="isError">
+  No se encontró nada con el término "{{ termino }}"
+</div>
+<div class="row" *ngIf="countries.length > 0">
+  <div class="col">
+   <app-table [countries]="countries"></app-table>
+  </div>
+</div>
