@@ -1,13 +1,11 @@
-<div class="alert alert-info" *ngIf="!country; else divCountry">
-  Espere por favor....
-</div>
+<app-loading *ngIf="!country; else divCountry"></app-loading>
 
-<ng-template #divCountry class="animate__animated animate__fadeIn animate__faster">
+<ng-template #divCountry class="animate__animated animate__fadeIn">
   <div class="row">
     <div class="col-12">
       <h1>
         País:
-        <small>{{ country.name.official }}</small>
+        <small>{{ country.name.common }}</small>
       </h1>
     </div>
   </div>
@@ -16,7 +14,7 @@
       <h3>Bandera</h3>
       <img
         [src]="country.flags.png"
-        [alt]="country.name.official"
+        [alt]="country.name.common"
         class="img-thumbnail"
       />
     </div>
@@ -36,22 +34,60 @@
           {{ country.cca3 }}
         </li>
       </ul>
+
+      <a
+        [href]="country.maps.googleMaps"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-outline-primary mr-1"
+      >
+        Ver ubicación en Google Maps
+      </a>
+      <a
+        [href]="country.maps.openStreetMaps"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-outline-primary m-1"
+      >
+        Ver ubicación en Open Street Maps
+      </a>
     </div>
     <h3>Traducciones</h3>
     <div class="row">
       <div class="col">
-        <span class="badge bg-primary m-1">{{ country.translations["ara"].official }}</span>
-        <span class="badge bg-primary m-1">{{ country.translations["ces"].official }}</span>
-        <span class="badge bg-primary m-1">{{ country.translations["cym"].official }}</span>
-        <span class="badge bg-primary m-1">{{ country.translations["deu"].official }}</span>
-        <span class="badge bg-primary m-1">{{ country.translations["est"].official }}</span>
-        <span class="badge bg-primary m-1">{{ country.translations["fin"].official }}</span>
-        <span class="badge bg-primary m-1">{{ country.translations["fra"].official }}</span>
-        <span class="badge bg-primary m-1">{{ country.translations["hrv"].official }}</span>
-        <span class="badge bg-primary m-1">{{ country.translations["hun"].official }}</span>
-        <span class="badge bg-primary m-1">{{ country.translations["ita"].official }}</span>
+        <span class="badge bg-primary m-1">
+          {{ country.translations['ara'].official }}
+        </span>
+        <span class="badge bg-primary m-1">
+          {{ country.translations['ces'].official }}
+        </span>
+        <span class="badge bg-primary m-1">
+          {{ country.translations['cym'].official }}
+        </span>
+        <span class="badge bg-primary m-1">
+          {{ country.translations['deu'].official }}
+        </span>
+        <span class="badge bg-primary m-1">
+          {{ country.translations['est'].official }}
+        </span>
+        <span class="badge bg-primary m-1">
+          {{ country.translations['fin'].official }}
+        </span>
+        <span class="badge bg-primary m-1">
+          {{ country.translations['fra'].official }}
+        </span>
+        <span class="badge bg-primary m-1">
+          {{ country.translations['hrv'].official }}
+        </span>
+        <span class="badge bg-primary m-1">
+          {{ country.translations['hun'].official }}
+        </span>
+        <span class="badge bg-primary m-1">
+          {{ country.translations['ita'].official }}
+        </span>
       </div>
     </div>
+
     <pre class="mt-5">
       <h3>Resultado al obtener el país:</h3>
         {{ country | json }}

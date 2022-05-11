@@ -15,10 +15,10 @@
         <img
           class="small-flag"
           [src]="country.flags.png"
-          [alt]="country.name.official"
+          [alt]="country.name.common"
         />
       </td>
-      <td>{{ country.capital }}, {{ country.name?.official ?? country.name}}</td>
+      <td>{{ country.capital }}, {{ country.name?.common ?? country.name}}</td>
       <td>{{ country.population | number }}</td>
       <td>
         <a [routerLink]="['/pais', country?.cca2 ?? country.alpha3Code]">Ver...</a>

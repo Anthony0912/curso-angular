@@ -1,4 +1,4 @@
-<div class="animate__animated animate__fadeIn animate__faster">
+<div class="animate__animated animate__fadeIn">
   <h2>Buscar por País</h2>
   <hr />
   <div class="row">
@@ -10,13 +10,16 @@
       ></app-input>
     </div>
   </div>
-  <ul class="list-group" *ngIf="showSuggestion">
+  <ul
+    class="list-group animate__animated animate__fadeIn"
+    *ngIf="showSuggestion"
+  >
     <li
       class="list-group-item list-group-item-action"
       *ngFor="let countriesSuggestion of countriesSuggestions"
     >
       <a class="nav-link" [routerLink]="['/pais', countriesSuggestion.cca2]">
-        {{ countriesSuggestion.name.official }}
+        {{ countriesSuggestion.name.common }}
       </a>
     </li>
     <li class="list-group-item list-group-item-action">

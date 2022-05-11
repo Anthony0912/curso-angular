@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { tap } from 'rxjs';
 import { Country } from '../../interfaces/country.interface';
 import { CountryService } from '../../services/country.service';
 
@@ -29,7 +28,6 @@ export class CountryComponent implements OnInit {
     if (this.termino.length > 0) {
       this.countryService.searchCountry(termino).subscribe((countries: Country[]) => {
         this.countries = countries
-
       }, (err) => {
         this.isError = true
         this.countries = []

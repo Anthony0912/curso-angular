@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap, tap } from 'rxjs';
+import { switchMap } from 'rxjs';
 import { Country } from '../../interfaces/country.interface';
 import { CountryService } from '../../services/country.service';
 
@@ -14,14 +15,13 @@ export class ViewCountryComponent implements OnInit {
 
   public country!: Country;
 
-  constructor(private activatedRoute: ActivatedRoute, private countryService: CountryService) { }
+  constructor(private activatedRoute: ActivatedRoute, private countryService: CountryService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.pipe(switchMap(({ id }) => this.countryService.searchCountryByCode(id))).subscribe(country => {
       this.country = country[0]
     })
   };
-
 }
 
 // Con tap en el pipe
