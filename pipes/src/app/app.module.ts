@@ -5,6 +5,7 @@ import { AppRouterModule } from './app-router.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { SalesModule } from './sales/sales.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Change language pipe
 import localEsCR from '@angular/common/locales/es-CR';
@@ -21,7 +22,8 @@ registerLocaleData(localFr);
     BrowserModule,
     SharedModule,
     AppRouterModule,
-    SalesModule
+    SalesModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'es-CR'}
