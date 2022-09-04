@@ -5,6 +5,9 @@ import { NotCommonsComponent } from './page/not-commons/not-commons.component';
 import { BasicsComponent } from './page/basics/basics.component';
 import { OrderComponent } from './page/order/order.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
+import { UppercasePipe } from './pipes/uppercase.pipe';
+import { FlyPipe } from './pipes/fly.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 
 
@@ -13,7 +16,10 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
     NumbersComponent,
     NotCommonsComponent,
     BasicsComponent,
-    OrderComponent
+    OrderComponent,
+    UppercasePipe,
+    FlyPipe,
+    SortPipe
   ],
   exports: [
     NumbersComponent,
