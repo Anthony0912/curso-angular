@@ -1,0 +1,72 @@
+<h2>Validaciones Reactivas</h2>
+<hr>
+<div class="row">
+    <div class="col">
+        <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="handleOnSubmitMyForm()">
+            <div class="row mb-3">
+                <label for="name" class="col-sm-3 col-form-label">Nombre</label>
+                <div class="col-sm-9">
+                    <input type="text" id="name" class="form-control" formControlName="name" placeholder="Nombre de completo">
+                    <span class="form-text text-danger" *ngIf="inputNotValid('name')">Debe de ser en formato de nombre y apellido.</span>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <label for="email" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                    <input type="email" id="email" class="form-control" formControlName="email" placeholder="Correo electronico">
+                    <span class="form-text text-danger" *ngIf="inputNotValid('email')">{{emailError}}</span>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <label for="usename" class="col-sm-3 col-form-label">Nombre de usuario</label>
+                <div class="col-sm-9">
+                    <input type="text" id="usename" class="form-control" formControlName="username" placeholder="Nombre de usuario">
+                    <span class="form-text text-danger" *ngIf="inputNotValid('username')">El nombre de usuario no puede ser strider.</span>
+                </div>
+            </div>
+           
+            <div class="row mb-3">
+                <label for="password-1" class="col-sm-3 col-form-label">Contraseña</label>
+                <div class="col-sm-9">
+                    <input id="password-1" type="password" class="form-control" formControlName="password" placeholder="Contraseña">
+                    <span class="form-text text-danger" *ngIf="inputNotValid('password')">La contraseña debe ser mayor a 6 caracteres.</span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="password-2" class="col-sm-3 col-form-label">Contraseña</label>
+                <div class="col-sm-9">
+                    <input id="password-2" type="password" class="form-control" formControlName="repeatPassword" placeholder="Confirmar Contraseña">
+                    <span class="form-text text-danger" *ngIf="inputNotValid('repeatPassword')">Las contraseñas deben ser iguales.</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" [disabled]="myForm.pending" class="btn btn-primary float-end">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<h5>Form Valid: </h5>
+<span>{{myForm.valid}}</span>
+<h5>Form pending: </h5>
+<span>{{myForm.pending}}</span>
+<h5>Form Status: </h5>
+<span>{{myForm.status}}</span>
+<h5>Form Errors: </h5>
+<span>{{myForm.controls.errors | json }}</span>
+<h5>Nombre:</h5>
+<span>{{myForm.controls.name.errors | json}}</span>
+<h5>Correo electronico:</h5>
+<span>{{myForm.controls.email.errors | json}}</span>
+<h5>Nombre de usuario:</h5>
+<span>{{myForm.controls.username.errors | json}}</span>
+<h5>Contraseña:</h5>
+<span>{{myForm.controls.password.errors | json}}</span>
+<h5>Repetir contraseña:</h5>
+<span>{{myForm.controls.repeatPassword.errors | json}}</span>
